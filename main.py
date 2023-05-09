@@ -6,4 +6,4 @@ file = VideoConverter(
     {"format": "flv", "video": {"codec": "copy"}, "audio": {"codec": "copy"}},
 )
 
-file.convert()
+file.run()
