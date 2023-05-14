@@ -51,4 +51,4 @@ class VideoConverter(Converter):
         convert = self.convert(inputFile, outputFile, options)
 
         for timestamp in convert:
-            pass
+            print(timestamp)
