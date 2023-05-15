@@ -1,9 +1,10 @@
-from videoConverter import VideoConverter
+from controller import Controller
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-file = VideoConverter(
-    "media/sample.mp4",
-    "media/output.flv",
-    {"format": "flv", "video": {"codec": "copy"}, "audio": {"codec": "copy"}},
-)
-
-file.run()
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Controller(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

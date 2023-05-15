@@ -48,7 +48,10 @@ class VideoConverter(Converter):
         outputFile = self.__outputFile
         options = self.__options
 
-        convert = self.convert(inputFile, outputFile, options)
+        convert = self.convert(inputFile, outputFile, options, timeout=None)
 
-        for timestamp in convert:
-            print(timestamp)
+        try:
+            for timestamp in convert:
+                print(f'\rConverting ({timestamp:2f})')
+        except AttributeError:
+            print('ok')
