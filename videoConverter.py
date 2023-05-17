@@ -8,7 +8,8 @@ class VideoConverter(Converter):
     def __init__(
         self,
         inputFile: str,
-        outputFile: str,
+        outputFolder: str,
+        outputFileName: str,
         options: dict,
         ffmpeg_path=ffmpegPath,
         ffprobe_path=ffprobePath,
@@ -16,7 +17,8 @@ class VideoConverter(Converter):
         super().__init__(ffmpeg_path, ffprobe_path)
 
         self.__inputFile = inputFile
-        self.__outputFile = outputFile
+        self.__outputFolder = outputFolder
+        self.__outputFileName = outputFileName
         self.__options = options
 
     @property
@@ -45,13 +47,15 @@ class VideoConverter(Converter):
 
     def run(self):
         inputFile = self.__inputFile
-        outputFile = self.__outputFile
+        outputFolder = self.__outputFolder
+        outputFile = self.__outputFileName
         options = self.__options
+        outputPath = f"{outputFolder}/{outputFile}.{options['format']}"
 
-        convert = self.convert(inputFile, outputFile, options, timeout=None)
+        convert = self.convert(inputFile, outputPath, options, timeout=None)
 
         try:
             for timestamp in convert:
-                print(f'\rConverting ({timestamp:2f})')
+                print(f"\rConverting ({timestamp:2f})")
         except AttributeError:
-            print('ok')
+            print("ok")

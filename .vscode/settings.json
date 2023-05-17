@@ -1,5 +1,4 @@
 {
-    "python.analysis.extraPaths": [
-        "./converter"
-    ]
+  "python.analysis.extraPaths": ["./converter"],
+  "python.linting.enabled": true
 }
